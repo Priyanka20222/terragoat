@@ -1,0 +1,49 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+  trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+
+steps:
+    # Install Checkov
+    - bash: pip3 install checkov
+      displayName: 'Install checkov'
+      name: 'install_checkov'
+
+  # Verify main files with Checkov
+    - bash: checkov -s -d $(System.DefaultWorkingDirectory)/terraform/azure -o junitxml > $(System.DefaultWorkingDirectory)/Checkov-Root-Report.xml
+      displayName: 'Verify root module with Checkov'
+      name: 'checkov_root_check'
+
+  # Publish test results for root module
+    - task: PublishTestResults@2
+      displayName: Publish Checkov Root Test Results
+      condition: succeededOrFailed()
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '**/*Checkov-Root-Report.xml'
+        searchFolder: '$(System.DefaultWorkingDirectory)'
+        mergeTestResults: false
+        testRunTitle: Checkov Root Scan
+        failTaskOnFailedTests: false
+        publishRunAttachments: true
