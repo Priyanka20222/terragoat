@@ -9,16 +9,16 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
--script: |
+
+- script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
   trigger:
 - master
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
+
+steps:
     # Install Checkov
     - bash: pip3 install checkov
       displayName: 'Install checkov'
