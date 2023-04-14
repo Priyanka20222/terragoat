@@ -9,9 +9,6 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
@@ -19,9 +16,10 @@ steps:
   displayName: 'Run a multi-line script'
   trigger:
 - master
-
-
 steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
     # Install Checkov
     - bash: pip3 install checkov
       displayName: 'Install checkov'
