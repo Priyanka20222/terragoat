@@ -20,9 +20,6 @@ steps:
   trigger:
 - master
 
-pool:
-  vmImage: ubuntu-latest
-
 
 steps:
     # Install Checkov
