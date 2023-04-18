@@ -18,6 +18,11 @@ steps:
     monitorWhen: 'always'
     failOnIssues: false
   displayName: 'Run a one-line script'
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'Sonar_Cloud'
+    organization: 'sonarcloud-trial'
+    scannerMode: 'Other'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
