@@ -8,5 +8,4 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
 - task: SonarCloudAnalyze@1
