@@ -11,13 +11,11 @@ pool:
 
 steps:
 - script: echo Hello, world!
-
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'Sonar_Cloud'
     organization: 'sonarcloud-trial'
-    scannerMode: 'MSBuild'
-    projectKey: 'sonarcloud-trial'
+    scannerMode: 'Other''
 - task: SonarCloudAnalyze@1
 
 - script: |
