@@ -22,3 +22,4 @@ steps:
     SonarCloud: 'Sonar_Cloud'
     organization: 'sonarcloud-trial'
     scannerMode: 'Other'
+- task: SonarCloudAnalyze@1
