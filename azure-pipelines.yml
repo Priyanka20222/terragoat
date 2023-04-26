@@ -14,3 +14,5 @@ pool:
     organization: 'sonarcloud-trial'
     scannerMode: 'Other'
 - task: SonarCloudAnalyze@1
+- name: HCL AppScan CodeSweep
+  uses: HCL-TECH-SOFTWARE/appscan-codesweep-action@v2
