@@ -17,8 +17,3 @@ steps:
     organization: 'sonarcloud-trial'
     scannerMode: 'Other''
 - task: SonarCloudAnalyze@1
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
- 
